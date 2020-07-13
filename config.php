@@ -17,7 +17,7 @@ $google_client->setClientId('558741702093-qpeil4m11drufdmhapp9minlh8t118q0.apps.
 $google_client->setClientSecret('ewgWbIHAHjvdcMkpqGFY1Ga1');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/login%20in%20nepal%20patro/index.php');
+$google_client->setRedirectUri('http://nepalpatro.github.io');
 
 // to get the email and profile 
 $google_client->addScope('email');
