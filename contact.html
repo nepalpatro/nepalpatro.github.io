@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendar</title>
+</head>
+<body>
+<iframe src="https://www.ashesh.com.np/panchang/widget.php?header_title=Nepali Panchang&header_color=e6e5e2&api=720175k169" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:100%; height:365px; border-radius:5px;" allowtransparency="true">
+</iframe><br><span style="color:purple; font-size:8px; text-align:left">© <a href="https://www.ashesh.com.np/panchang/" title="Nepali Panchang" target="_top" style="text-decoration:none; color:gray;">Nepal Panchang</a></span>
+
+
+
+ <div class="card-view-content">
+        <div class="ui-form-widget">
+        <h2 class="text-center ui-margin-b"> Get Your Kundli by Date of Birth</h2> 
+            
+<form name="kundlibirthdetails"  action="//ascloud.astrosage.com/cloud/createsession.asp" class="form-horizontal" method="post" onsubmit="return formValidation();">
+
+<fieldset class="form-box">
+
+    <div class="row">
+        <div class="col-xs-7">
+            <label for="Name" class="control-label">
+                Name</label>
+            <input type="text" name="name" id="Name" class="form-control" placeholder="Name" maxlength="100" tabindex="1" />
+        </div>
+        <div class="col-xs-5">
+            <label for="sex" class="control-label">
+                Gender</label>
+            <div class="switch-field">
+                <input type="radio" id="male" name="sex" value="male" checked  tabindex="2"/>
+                <label for="male" class="radio-ones"> Male</label>
+                <input type="radio" id="female" name="sex" value="female" tabindex="3" />
+                <label for="female" class="radio-twos">Female</label>
+            </div>
+        </div>
+    </div>
+ <div class="row"> 
+    <div class="col-xs-4">
+    <label for="Day" class="control-label">Day</label>
+        <input type="number" class="form-control" name="day" id="Day" placeholder="Day" 
+            maxlength="2" tabindex="4" data-toggle="tooltip" title="Day" value="" />
+    </div>
+    <div class="col-xs-4">
+    <label for="Month" class="control-label">Month</label>
+        <input type="number" class="form-control input-sm-1" name="month" id="Month" 
+            placeholder="Month" maxlength="2" tabindex="5" data-toggle="tooltip" title="Month" value="" />
+    </div>
+    <div class="col-xs-4">
+    <label for="Year" class="control-label">Year</label>
+        <input type="number" class="form-control input-sm-3" name="year" id="Year" 
+            placeholder="Year" maxlength="4" tabindex="6" data-toggle="tooltip" title="Year" value=""/>
+    </div>
+</div>
+
+    <div class="row">
+                <div class="col-xs-4">
+                <label for="Hrs" class="control-label">Hrs</label>
+                    <input type="number" class="form-control" name="hrs" id="Hrs" placeholder="Hours" 
+                        maxlength="2" tabindex="7" data-toggle="tooltip" title="Hours" value="" />
+                </div>
+                <div class="col-xs-4">
+                <label for="Min" class="control-label">Min</label>
+                    <input type="number" class="form-control input-sm-1" name="min" id="Min" 
+                        placeholder="Minute" maxlength="2" tabindex="8" data-toggle="tooltip" title="Minute" value=""/>
+                </div>
+                <div class="col-xs-4">
+                <label for="Sec" class="control-label">Sec</label>
+                    <input type="number" class="form-control input-sm-3" name="sec" id="Sec" 
+                        placeholder="Second" maxlength="2" tabindex="9" data-toggle="tooltip" title="Second" value=""/>
+                </div>
+            
+    </div>
+    <div class="row">
+       <div class="col-sm-12">
+       <label for="place" class="control-label">
+            Place of Birth</label>
+            <input type="text" name="place" id="place" value=""
+                class="form-control" placeholder="Place of Birth" tabindex="10"/>
+            <span id="dstval"></span>
+        </div>
+    </div>
+    <div class="pull-left ui-margin-t">
+        <a id="aTag" href="javascript:toggleAndChangeText();" class="btn btn-white card-shadow br-radius btn-sm">[&#43;]
+            Settings</a>
+    </div>
+    <div class="ui-margin-t pull-right">
+        <a href="javaScript:void(0)" onclick="findlocation('CurrentLocation');" class="btn btn-white card-shadow br-radius btn-sm">
+            Current Location</a> <a href="javaScript:void(0)" onclick="findlocation('CurrentTime');"
+                class="btn btn-white card-shadow br-radius btn-sm">Now</a>
+    </div>
+</fieldset>
+<div id="divToToggle" style="display: none;" class="clear">
+<fieldset class="form-box">
+        <h2 align="center">
+            Advanced Settings <a href="javascript:void(0)" onclick="getgpsAccuracy();" class="pull-right"
+                style="font-size: 15px;"><u>GPS Accuracy</u></a></h2>
+        <div class="row">
+            
+                    <div class="col-xs-4">
+                    <label for="LongDeg" class="control-label">LongDeg</label>
+                        <input class="form-control" type="text" name="longdeg"  autocomplete="off" maxlength="3" placeholder="LongDegree"
+                            id="LongDeg" tabindex="10" data-toggle="tooltip" title="Longitude Degree" />
+                    </div>
+                    <div class="col-xs-4">
+                    <label for="LongMin" class="control-label">LongMin</label>
+                        <input class="form-control" type="text" name="longmin"  autocomplete="off" id="LongMin"
+                            placeholder="LongMinute" tabindex="11" data-toggle="tooltip" maxlength="2" title="Longitude Minute" />
+                    </div>
+                    <div class="col-xs-4">
+                    <label for="LongEW" class="control-label">LongEW</label>
+                        <select class="form-control" name="longew" id="LongEW" tabindex="12" data-toggle="tooltip"
+                            title="Longitude Direction">
+                            <option value="LongEW">LongEW</option>
+                            <option value="E" >
+                                E</option>
+                            <option value="W" >
+                                W</option>
+                        </select>
+                    </div>
+                    <input type="hidden" id="accuracy" name="accuracy" />
+               
+        </div>
+        <div class="row">
+                    <div class="col-xs-4">
+                    <label for="LatDeg" class="control-label">LatDeg</label>
+                        <input class="form-control" type="text" name="latdeg"  autocomplete="off" id="LatDeg"
+                            title="Latitude Degree" placeholder="LatDegree"maxlength="3" tabindex="13" data-toggle="tooltip" />
+                    </div>
+                    <div class="col-xs-4">
+                    <label for="LatMin" class="control-label">LatMin</label>
+                        <input class="form-control" type="text" name="latmin"  autocomplete="off" id="LatMin"
+                            placeholder="LatMinute" tabindex="14" data-toggle="tooltip" maxlength="2"title="Latitude Minute" />
+                    </div>
+                    <div class="col-xs-4">
+                    <label for="LatNS" class="control-label">LatNS</label>
+                        <select class="form-control" name="latns" id="LatNS" tabindex="15" data-toggle="tooltip"
+                            title="Latitude Direction">
+                            <option value="LatNS">LatNS</option>
+                            <option value="N" >
+                                N</option>
+                            <option value="S" >
+                                S</option>
+                        </select>
+                    </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-sm-12">
+            <label for="timeZone" class="control-label">
+                Time Zone</label>
+                <input class="form-control" type="text" name="timezone"  autocomplete="off" id="timeZone"
+                    title="Time Zone in hours e.g. 5.5 for India" data-toggle="tooltip" maxlength="8" placeholder="Timezone" tabindex="16" />
+            </div>
+        </div>
+        <div class="row">
+           
+            <div class="col-sm-12">
+             <label for="ayanamsa" class="control-label">
+                Ayanamsa</label>
+                <select name="ayanamsa" id="ayanamsa" class="form-control" tabindex="17">
+                    <option value="0">N.C.Lahiri</option>
+                    <option value="1">K.P. New</option>
+                    <option value="2">K.P. Old</option>
+                    <option value="3">B.V.Raman</option>
+                    <option value="4">KP Khullar</option>
+                    <option value="5">Sayan</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+          
+            <div class="col-sm-12">
+              <label for="charting" class="control-label">
+                Chart Style</label>
+                <select name="charting" id="charting" class="form-control" tabindex="18">
+                    <option value="0">North Indian</option>
+                    <option value="1">South Indian</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+                    <div class="col-xs-6">
+                    <label for="kphn" class="control-label">
+                KP Horary Number (1-249)</label>
+                        <input type="text" class="form-control" name="kphn" size="3" value="0" id="kphn"
+                            maxlength="3" autocomplete="off" placeholder="kphn" tabindex="19" />
+                    </div>
+                    <div class="col-xs-6">
+                    <p> &nbsp;</p>
+                        <a href="javascript:void(0)" onclick="fillkphn();"><u>Random KP Number</u></a>
+                    </div>
+        </div>
+    </fieldset>
+</div>
+<div align="center" class="ui-margin-t clear">
+    
+    <button type="submit" id="submit" name="submit" value="Show Kundli" class="btn btn-deep-orange card-shadow br-radius btn-small"
+        tabindex="19">
+        Show Kundli</button>
+    
+</div>
+</body>
+</html>
+<a href="tel:+9779845680757">Call (+977)9845680757</a>
+
